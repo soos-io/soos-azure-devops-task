@@ -63,9 +63,6 @@
   "files": [
     {
       "path": "src"
-    },
-    {
-      "path": "./task.json"
     }
   ],
   "contributions": [
