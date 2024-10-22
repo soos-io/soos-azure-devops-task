@@ -1,0 +1,80 @@
+{
+  "_documentation": "https://docs.microsoft.com/en-us/azure/devops/extend/develop/manifest?view=azure-devops",
+  "manifestVersion": 1,
+  "id": "Dev-SOOS-Security-Analysis",
+  "name": "Dev SOOS Security Analysis",
+  "_comment": "NOTE: the task id and name are set by the build pipeline",
+  "description": "Software security, simplified.",
+  "publisher": "SOOS",
+  "version": "0.0.0",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "branding": {
+    "color": "#001267",
+    "theme": "dark"
+  },
+  "icons": {
+    "default": "images/logo.png"
+  },
+  "content": {
+    "details": {
+      "path": "overview.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "links": {
+    "learn": {
+      "uri": "https://soos.io"
+    },
+    "getstarted": {
+      "uri": "https://app.soos.io/register"
+    },
+    "support": {
+      "uri": "https://kb.soos.io/help"
+    },
+    "privacypolicy": {
+      "uri": "https://soos.io/privacy-policy"
+    }
+  },
+  "tags": [
+    "SCA",
+    "DAST",
+    "Scan",
+    "OSS",
+    "Open Source Software",
+    "Security",
+    "Software Security",
+    "DevOps",
+    "DevSecOps",
+    "Vulnerability",
+    "CVE",
+    "Violation",
+    "Governance",
+    "Policy"
+  ],
+  "files": [
+    {
+      "path": "src"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "scan-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "src"
+      }
+    }
+  ]
+}

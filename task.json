@@ -1,0 +1,514 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "a21f80db-4f92-49d5-81fe-93a711dd73cb",
+  "name": "SOOS",
+  "friendlyName": "SOOS Security Analysis",
+  "description": "Software security, simplified.",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "SOOS",
+  "instanceNameFormat": "SOOS $(scanType) Security Analysis",
+  "minimumAgentVersion": "3.224.0",
+  "version": {
+    "Major": 0,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "execution": {
+    "Node20_1": {
+      "target": "build/task.js"
+    }
+  },
+  "groups": [
+    {
+      "name": "SAST",
+      "displayName": "Static Application Security Testing (SAST) Settings",
+      "isExpanded": true,
+      "visibleRule": "scanType = SAST"
+    },
+    {
+      "name": "SCA",
+      "displayName": "Software Composition Analysis (SCA) Settings",
+      "isExpanded": true,
+      "visibleRule": "scanType = SCA"
+    },
+    {
+      "name": "DAST",
+      "displayName": "Dynamic Application Security Testing (DAST) Settings",
+      "isExpanded": true,
+      "visibleRule": "scanType = DAST"
+    },
+    {
+      "name": "CSA",
+      "displayName": "Container Security Analysis (CSA) Settings",
+      "isExpanded": true,
+      "visibleRule": "scanType = CSA"
+    },
+    {
+      "name": "SBOM",
+      "displayName": "SBOM Security Analysis (SBOM) Settings",
+      "isExpanded": true,
+      "visibleRule": "scanType = SBOM"
+    },
+    {
+      "name": "Docker",
+      "displayName": "Docker images common Settings",
+      "isExpanded": true,
+      "visibleRule": "scanType = CSA || scanType = DAST"
+    },
+    {
+      "name": "Npm",
+      "displayName": "Script execution common Settings",
+      "isExpanded": true,
+      "visibleRule": "scanType = SCA || scanType = SAST || scanType = SBOM"
+    },
+    {
+      "name": "SCA-DAST-CSA-SAST",
+      "displayName": "SCA-DAST-CSA-SAST Common settings",
+      "isExpanded": true,
+      "visibleRule": "scanType = CSA || scanType = SCA || scanType = DAST || scanType = SAST"
+    },
+    {
+      "name": "SCA-SAST",
+      "displayName": "SCA-SAST Common settings",
+      "isExpanded": true,
+      "visibleRule": "scanType = SCA || scanType = SAST"
+    },
+    {
+      "name": "SCA-SAST-SBOM",
+      "displayName": "SCA-SAST-SBOM Common settings",
+      "isExpanded": true,
+      "visibleRule": "scanType = SCA || scanType = SAST || scanType = SBOM"
+    },
+    {
+      "name": "AdditionalSettings",
+      "displayName": "Additional Settings",
+      "isExpanded": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "apiKey",
+      "required": true,
+      "type": "string",
+      "label": "API Key",
+      "helpMarkDown": "SOOS API Key"
+    },
+    {
+      "name": "clientId",
+      "required": true,
+      "type": "string",
+      "label": "Client Id",
+      "helpMarkDown": "SOOS Client ID"
+    },
+    {
+      "name": "scanType",
+      "type": "pickList",
+      "label": "Scan Type",
+      "helpMarkDown": "The type of scan you would like to run.",
+      "defaultValue": "SCA",
+      "options": {
+        "SCA": "Software Composition Analysis (SCA)",
+        "DAST": "Dynamic Application Security Testing (DAST)",
+        "CSA": "Container Security Analysis (CSA)",
+        "SBOM": "SBOM Security Analysis (SBOM)",
+        "SAST": "Static Application Security Testing (SAST)"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
+    },
+    {
+      "name": "projectName",
+      "aliases": ["project"],
+      "type": "string",
+      "label": "Project Name",
+      "helpMarkDown": "The name of the project. Defaults to 'Build.Repository.Name'."
+    },
+    {
+      "name": "branch",
+      "type": "string",
+      "label": "Branch",
+      "helpMarkDown": "The name of the branch. Defaults to 'System.PullRequest.SourceBranch' when available, otherwise 'Build.SourceBranch'."
+    },
+    {
+      "name": "branchUri",
+      "type": "string",
+      "label": "Branch URI",
+      "helpMarkDown": "The link to the current branch. Defaults to 'Build.Repository.Uri'."
+    },
+    {
+      "name": "commitHash",
+      "type": "string",
+      "label": "Commit Hash",
+      "helpMarkDown": "The commit hash associated with the code being analyzed. Defaults to 'Build.SourceVersion'."
+    },
+    {
+      "name": "buildVersion",
+      "type": "string",
+      "label": "Build Version",
+      "helpMarkDown": "The current build version."
+    },
+    {
+      "name": "buildUri",
+      "type": "string",
+      "label": "Build URI",
+      "helpMarkDown": "The link to the current build. Defaults to 'Build.BuildUri'."
+    },
+    {
+      "name": "outputFormat",
+      "type": "pickList",
+      "label": "Output Format",
+      "helpMarkDown": "After the scan finishes, log the output to the console.",
+      "defaultValue": "not_set",
+      "options": {
+        "not_set": "<Not Set>",
+        "SARIF": "SARIF"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
+    },
+
+    {
+      "name": "projectPath",
+      "aliases": ["path"],
+      "groupName": "SCA-SAST",
+      "type": "string",
+      "label": "Project Path",
+      "helpMarkDown": "The relative path to the project root. Defaults to 'Build.SourcesDirectory'. (Where the files to scan are located)"
+    },
+    {
+      "name": "packageManagers",
+      "groupName": "SCA",
+      "type": "pickList",
+      "label": "Package Managers",
+      "helpMarkDown": "A list of package managers, delimited by comma, to include when searching for manifest files.",
+      "properties": {
+        "MultiSelectFlatList": "True",
+        "EditableOptions": "False"
+      },
+      "options": {
+        "CFamily": "C/C++",
+        "Dart": "Dart",
+        "Erlang": "Erlang",
+        "Go": "Go",
+        "Homebrew": "Homebrew",
+        "Java": "Java",
+        "NPM": "NPM",
+        "NuGet": "NuGet",
+        "PHP": "PHP",
+        "Python": "Python",
+        "Ruby": "Ruby",
+        "Rust": "Rust",
+        "Swift": "Swift",
+        "Unity": "Unity"
+      }
+    },
+    {
+      "name": "excludedDirectories",
+      "groupName": "SCA-SAST-SBOM",
+      "type": "multiLine",
+      "defaultValue": "",
+      "label": "Excluded Directory Glob Patterns",
+      "helpMarkDown": "A list of directory glob patterns, delimited by comma, to exclude when searching for manifest or SBOM files. (e.g. '**/not_these/*.config')"
+    },
+    {
+      "name": "excludedFiles",
+      "groupName": "SCA-SAST-SBOM",
+      "type": "multiLine",
+      "defaultValue": "",
+      "label": "Excluded Files Glob Patterns",
+      "helpMarkDown": "A list of files glob patterns, delimited by comma, to exclude when searching for manifest or SBOM files. (e.g. '**/requirements.txt')"
+    },
+    {
+      "name": "workingDirectory",
+      "groupName": "Docker",
+      "type": "string",
+      "label": "Working Directory",
+      "helpMarkDown": "The working directory mounted for container to access files. Defaults to 'Build.SourcesDirectory'."
+    },
+    {
+      "name": "targetUri",
+      "groupName": "DAST",
+      "required": true,
+      "type": "string",
+      "label": "Target Uri",
+      "helpMarkDown": "This can either be the URL of the application you wish to scan, starting with 'http://' or 'https://', or the relative to the workingDirectory path to the spec file you wish to scan (e.g. openapi.json)."
+    },
+    {
+      "name": "scanMode",
+      "groupName": "DAST",
+      "type": "pickList",
+      "label": "Scan Mode",
+      "options": {
+        "baseline": "Baseline",
+        "fullscan": "Full",
+        "apiscan": "Api",
+        "activescan": "Active"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
+    },
+    {
+      "name": "onFailure",
+      "groupName": "SCA-DAST-CSA-SAST",
+      "type": "pickList",
+      "label": "On Failure",
+      "helpMarkDown": "Action to perform when the scan fails.",
+      "defaultValue": "continue_on_failure",
+      "options": {
+        "CONTINUE_ON_FAILURE": "continue_on_failure",
+        "FAIL_THE_BUILD": "fail_the_build"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
+    },
+    {
+      "name": "apiFormat",
+      "groupName": "DAST",
+      "visibleRule": "scanMode = apiscan",
+      "type": "pickList",
+      "label": "Api Format",
+      "helpMarkDown": "The target API format: openapi, soap, or graphql.",
+      "options": {
+        "openapi": "OpenAPI",
+        "soap": "SOAP",
+        "graphql": "GraphQL"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
+    },
+    {
+      "name": "useAjaxSpider",
+      "groupName": "DAST",
+      "type": "boolean",
+      "label": "Use Ajax Spider",
+      "helpMarkDown": "When true the scan will use the ajax spider which is slower than the traditional spider but is better at handling applications that make heavy use of Javascript."
+    },
+    {
+      "name": "scanDurationInMinutes",
+      "groupName": "DAST",
+      "visibleRule": "scanMode = fullscan",
+      "type": "int",
+      "label": "Scan Duration In Minutes",
+      "helpMarkDown": "The duration of time in minutes for the spider to run before reporting the results."
+    },
+    {
+      "name": "disableRules",
+      "groupName": "DAST",
+      "type": "multiLine",
+      "label": "Disable Rules",
+      "helpMarkDown": "Comma separated list of ZAP rules IDs to disable. List for reference https://www.zaproxy.org/docs/alerts/. (e.g. 10001,10002)"
+    },
+    {
+      "name": "logLevel",
+      "groupName": "AdditionalSettings",
+      "type": "pickList",
+      "label": "Log Level",
+      "helpMarkDown": "Minimum Log Level to display across the Task.",
+      "defaultValue": "INFO",
+      "options": {
+        "DEBUG": "DEBUG",
+        "INFO": "INFO",
+        "WARN": "WARN",
+        "FAIL": "FAIL",
+        "ERROR": "ERROR"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
+    },
+    {
+      "name": "dockerImageTag",
+      "groupName": "Docker",
+      "type": "string",
+      "label": "Docker Image Tag",
+      "helpMarkDown": "The tag of the SOOS docker image you wish to run."
+    },
+    {
+      "name": "scriptVersion",
+      "groupName": "Npm",
+      "type": "string",
+      "label": "SOOS Script Version",
+      "defaultValue": "latest",
+      "helpMarkDown": "The version of the SOOS package to run. Defaults to latest."
+    },
+    {
+      "name": "contextFile",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Context File",
+      "helpMarkDown": "Relative path to the context file which will be loaded prior to scanning the target (e.g. Default.context)."
+    },
+    {
+      "name": "requestHeaders",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Request Headers",
+      "helpMarkDown": "Headers added to every request. Example: header1:value1, header2:value2"
+    },
+    {
+      "name": "bearerToken",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Bearer Token",
+      "helpMarkDown": "Bearer token to include in the authorization header on every request."
+    },
+    {
+      "name": "authFormType",
+      "groupName": "DAST",
+      "type": "pickList",
+      "label": "Form Type",
+      "helpMarkDown": "simple (all fields are displayed at the same time), wait_for_password (Password field is displayed only after username is filled), or multi_page (Password field is displayed only after username is filled and submit is clicked)",
+      "options": {
+        "not_set": "<Not Set>",
+        "simple": "simple",
+        "wait_for_password": "wait_for_password",
+        "multi_page": "multi_page"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
+    },
+    {
+      "name": "authUsername",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Authentication Username",
+      "helpMarkDown": "Username to use when authenticating."
+    },
+    {
+      "name": "authPassword",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Authentication Password",
+      "helpMarkDown": "Password to use when authenticating."
+    },
+    {
+      "name": "authLoginURL",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Authentication URL",
+      "helpMarkDown": "Login URL to use when authenticating."
+    },
+    {
+      "name": "authUsernameField",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Username Input Id",
+      "helpMarkDown": "Username input id to use when authenticating."
+    },
+    {
+      "name": "authPasswordField",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Password Input Id",
+      "helpMarkDown": "Password input id to use when authenticating."
+    },
+    {
+      "name": "authSubmitField",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Submit Button Id",
+      "helpMarkDown": "Submit button id to use when authenticating."
+    },
+    {
+      "name": "authSecondSubmitField",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Second Submit Button Id",
+      "helpMarkDown": "Second submit button id to use in auth apps (for multi-page forms)."
+    },
+    {
+      "name": "authSubmitAction",
+      "groupName": "DAST",
+      "type": "pickList",
+      "label": "Submit Button Action",
+      "helpMarkDown": "",
+      "options": {
+        "not_set": "<Not Set>",
+        "click": "Click",
+        "submit": "Submit"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
+    },
+    {
+      "name": "authDelayTime",
+      "groupName": "DAST",
+      "type": "int",
+      "label": "Authentication Delay Time",
+      "helpMarkDown": "Delay time in seconds to wait for the page to load after performing actions in the form. (Used only on authFormType: wait_for_password and multi_page)."
+    },
+    {
+      "name": "authVerificationURL",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "Authentication Verification URL",
+      "helpMarkDown": "URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated."
+    },
+    {
+      "name": "debug",
+      "type": "boolean",
+      "groupName": "DAST",
+      "label": "Enable ZAP debug logging",
+      "helpMarkDown": "Enables ZAP debug logging."
+    },
+    {
+      "name": "oauthTokenUrl",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "OAuth Token URL",
+      "helpMarkDown": "The fully qualified authentication URL that grants the access_token."
+    },
+    {
+      "name": "oauthParameters",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "OAuth Parameters",
+      "helpMarkDown": "Parameters added to the OAuth token request. Example: client_id:value, client_secret:value, grant_type:value"
+    },
+    {
+      "name": "zapOptions",
+      "groupName": "DAST",
+      "type": "string",
+      "label": "ZAP Options",
+      "helpMarkDown": "Add additional command line options for ZAP"
+    },
+    {
+      "name": "otherOptions",
+      "groupName": "Docker",
+      "type": "string",
+      "label": "Other Options",
+      "helpMarkDown": "Add additional command line options for items specific to the underlying ZAP or Syft depending on the scan."
+    },
+    {
+      "name": "targetToScan",
+      "groupName": "CSA",
+      "required": true,
+      "type": "string",
+      "label": "The target to scan",
+      "helpMarkDown": "Should be a docker image name."
+    },
+    {
+      "name": "sbomPath",
+      "groupName": "SBOM",
+      "required": false,
+      "type": "string",
+      "label": "Sbom Path",
+      "helpMarkDown": "The SBOM file or folder to scan. When a folder is specified all SBOMs found in the folder and sub-folders will be scanned. If not specified it will default to root of the pipeline."
+    },
+    {
+      "name": "baseUri",
+      "groupName": "AdditionalSettings",
+      "type": "string",
+      "label": "API Base URI",
+      "helpMarkDown": "The SOOS Analysis API Base URI."
+    }
+  ]
+}

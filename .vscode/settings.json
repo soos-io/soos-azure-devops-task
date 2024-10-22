@@ -1,0 +1,19 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.configPath": ".prettierrc",
+  "cSpell.words": [
+    "apiscan",
+    "DAST",
+    "DEFAULTWORKINGDIRECTORY",
+    "fullscan",
+    "openapi",
+    "quickscan",
+    "sarif",
+    "sast",
+    "SBOM",
+    "SOOS"
+  ],
+  "soos-sca-scan.projectName": "PackageAwareAzureTask",
+}

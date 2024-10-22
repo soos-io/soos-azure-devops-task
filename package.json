@@ -1,0 +1,48 @@
+{
+  "name": "soos-azure-devops-task",
+  "description": "The SOOS Azure DevOps Security Analysis Task is available on the Microsoft VisualStudio AzureDevOps Marketplace",
+  "author": "SOOS",
+  "publisher": "SOOS",
+  "license": "MIT",
+  "_comment": "NOTE: the version is set by the build pipeline",
+  "version": "1.0.0",
+  "main": "build/task.js",
+  "scripts": {
+    "setup:install": "npm install",
+    "setup:clean-install": "npm ci",
+    "setup:update": "npx npm-check -u",
+    "setup:clean": "npx rimraf node_modules && npx rimraf package-lock.json",
+    "build": "tsc",
+    "build:clean": "npx rimraf build",
+    "format": "prettier ./src --check",
+    "format:fix": "prettier ./src --write",
+    "lint:clean": "npx -y rimraf ./.eslintcache",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && mocha build/test/_suite.js",
+    "test:coverage": "npm run test -- --reporter xunit --reporter-option output=ResultsFile.xml",
+    "check": "npm run format && npm run typecheck && npm run test",
+    "check:lite": "npm run format && npm run typecheck && npm outdated",
+    "link:soos-api-client": "npm link @soos-io/api-client && npm run build && npm link",
+    "patch-api-client": "npm run clean:all && npm install @soos-io/api-client@latest --save-exact && npm install && npm run check",
+    "clean": "npm run build:clean && npm run lint:clean",
+    "clean:all": "npm run clean && npm run setup:clean"
+  },
+  "dependencies": {
+    "@soos-io/api-client": "1.0.10",
+    "argparse": "^2.0.1",
+    "axios": "^1.7.7",
+    "azure-pipelines-task-lib": "^4.17.2",
+    "azure-pipelines-tasks-docker-common": "^2.245.0",
+    "core-js": "^3.38.1",
+    "glob": "^11.0.0",
+    "tslib": "^2.6.3"
+  },
+  "devDependencies": {
+    "@types/argparse": "^2.0.16",
+    "@types/mocha": "^10.0.8",
+    "@types/node": "^20.16.5",
+    "mocha": "^10.7.3",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2"
+  }
+}
