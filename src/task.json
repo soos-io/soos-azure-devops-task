@@ -16,7 +16,7 @@
   },
   "execution": {
     "Node20_1": {
-      "target": "build/task.js"
+      "target": "../build/task.js"
     }
   },
   "groups": [
