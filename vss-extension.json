@@ -3,7 +3,6 @@
   "manifestVersion": 1,
   "id": "Dev-SOOS-Security-Analysis",
   "name": "Dev SOOS Security Analysis",
-  "_comment": "NOTE: the task id and name are set by the build pipeline",
   "description": "Software security, simplified.",
   "publisher": "SOOS",
   "version": "0.0.0",
@@ -62,7 +61,7 @@
   ],
   "files": [
     {
-      "path": "build"
+      "path": "buildAndReleaseTask"
     }
   ],
   "contributions": [
@@ -73,7 +72,7 @@
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "build"
+        "name": "buildAndReleaseTask"
       }
     }
   ]

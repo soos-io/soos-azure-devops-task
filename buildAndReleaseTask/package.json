@@ -1,10 +1,10 @@
 {
   "name": "soos-azure-devops-task",
-  "description": "The SOOS Azure DevOps Security Analysis Task is available on the Microsoft VisualStudio AzureDevOps Marketplace",
+  "description": "SOOS Azure DevOps Security Analysis Task",
   "author": "SOOS",
   "publisher": "SOOS",
   "license": "MIT",
-  "_comment": "NOTE: the version is set by the build pipeline",
+  "_comment": "NOTE: Version is set by the build pipeline",
   "version": "1.0.0",
   "main": "build/task.js",
   "scripts": {
@@ -35,12 +35,12 @@
     "azure-pipelines-tasks-docker-common": "^2.245.0",
     "core-js": "^3.38.1",
     "glob": "^11.0.0",
-    "tslib": "^2.6.3"
+    "tslib": "^2.8.0"
   },
   "devDependencies": {
     "@types/argparse": "^2.0.16",
     "@types/mocha": "^10.0.8",
-    "@types/node": "^20.16.5",
+    "@types/node": "^20.16.14",
     "mocha": "^10.7.3",
     "prettier": "^3.3.3",
     "typescript": "^5.6.2"

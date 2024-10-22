@@ -8,7 +8,7 @@ describe("Security Scans", () => {
     it("should fail with bad input", async () => {
       // Given
       const testPath = path.join(__dirname, "DastScan/BadInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -26,7 +26,7 @@ describe("Security Scans", () => {
     it("should succeed with simple inputs", async () => {
       // Given
       const testPath = path.join(__dirname, "DastScan/MinimumRequiredInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -41,7 +41,7 @@ describe("Security Scans", () => {
     it("should succeed with a project name that contains quotes and spaces", async () => {
       // Given
       const testPath = path.join(__dirname, "DastScan/ProjectNameWithQuotesInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -57,7 +57,7 @@ describe("Security Scans", () => {
       // Given
 
       const testPath = path.join(__dirname, "DastScan/BadUrlInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -73,7 +73,7 @@ describe("Security Scans", () => {
     it("should fail with bad input", async () => {
       // Given
       const testPath = path.join(__dirname, "ScaScan/BadInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -91,7 +91,7 @@ describe("Security Scans", () => {
     it("should succeed with simple inputs", async () => {
       // Given
       const testPath = path.join(__dirname, "ScaScan/MinimumRequiredInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -106,7 +106,7 @@ describe("Security Scans", () => {
     it("should succeed with a script version set", async () => {
       // Given
       const testPath = path.join(__dirname, "ScaScan/ScriptVersionInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -121,7 +121,7 @@ describe("Security Scans", () => {
     it("should succeed with legacy input parameters", async () => {
       // Given
       const testPath = path.join(__dirname, "ScaScan/LegacyInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -136,7 +136,7 @@ describe("Security Scans", () => {
     it("should succeed when waiting for the scan output", async () => {
       // Given
       const testPath = path.join(__dirname, "ScaScan/OutputFormat");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -151,7 +151,7 @@ describe("Security Scans", () => {
     it("should succeed filtering package managers", async () => {
       // Given
       const testPath = path.join(__dirname, "ScaScan/FilteredPackageManagers");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -167,7 +167,7 @@ describe("Security Scans", () => {
     it("should succeed with simple inputs", async () => {
       // Given
       const testPath = path.join(__dirname, "ContainerScan/MinimumRequiredInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -184,7 +184,7 @@ describe("Security Scans", () => {
       // Given
 
       const testPath = path.join(__dirname, "SastScan/MinimumRequiredInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When
@@ -201,7 +201,7 @@ describe("Security Scans", () => {
       // Given
 
       const testPath = path.join(__dirname, "SbomScan/MinimumRequiredInput");
-      const taskJsonPath = path.join(__dirname, "../../src", "task.json");
+      const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
       // When

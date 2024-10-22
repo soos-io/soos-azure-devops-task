@@ -10,7 +10,7 @@ import {
 import ContainerConnection from "azure-pipelines-tasks-docker-common/containerconnection";
 
 export const getTaskVersion = (): string => {
-  const taskJsonPath = Path.resolve(__dirname, "../../src", "task.json");
+  const taskJsonPath = Path.resolve(__dirname, "..", "..", "task.json");
   const version = JSON.parse(
     FileSystem.readFileSync(taskJsonPath, SOOS_CONSTANTS.FileUploads.Encoding),
   ).version;

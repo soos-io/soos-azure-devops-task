@@ -107,12 +107,12 @@ dist
 /.vs/slnx.sqlite
 /.vs/PackageAwareAzureTask/config/applicationhost.config
 
-src/ResultsFile.xml
-src/.taskkey
+buildAndReleaseTask/ResultsFile.xml
+buildAndReleaseTask/.taskkey
 
 
 # build
-build
+buildAndReleaseTask/build
 
 # extension file
 *.vsix

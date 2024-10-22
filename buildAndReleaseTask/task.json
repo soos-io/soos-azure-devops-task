@@ -99,7 +99,7 @@
       "required": true,
       "type": "string",
       "label": "Client Id",
-      "helpMarkDown": "SOOS Client ID"
+      "helpMarkDown": "SOOS Client Id"
     },
     {
       "name": "scanType",
