@@ -158,8 +158,8 @@
     {
       "name": "outputFormat",
       "type": "pickList",
-      "label": "Output Format",
-      "helpMarkDown": "After the scan finishes, log the output to the console.",
+      "label": "DEPRECATED - Output Format",
+      "helpMarkDown": "DEPRECATED - this parameter has no effect. Use exportFormat and exportFileType.",
       "defaultValue": "not_set",
       "options": {
         "not_set": "<Not Set>",
@@ -169,13 +169,52 @@
         "EditableOptions": "False"
       }
     },
+    {
+      "name": "exportFormat",
+      "type": "pickList",
+      "label": "Export Format",
+      "helpMarkDown": "The file format to use when exporting results. See https://kb.soos.io/help/soos-reports-for-export for valid options.",
+      "defaultValue": "not_set",
+      "options": {
+        "not_set": "<Not Set>",
+        "CsafVex": "CsafVex",
+        "CycloneDx": "CycloneDx",
+        "Sarif": "Sarif",
+        "Spdx": "Spdx",
+        "SoosIssues": "SoosIssues",
+        "SoosLicenses": "SoosLicenses",
+        "SoosPackages": "SoosPackages",
+        "SoosVulnerabilities": "SoosVulnerabilities"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
+    },
+    {
+      "name": "exportFileType",
+      "type": "pickList",
+      "label": "Export File Type",
+      "helpMarkDown": "The file type to use when exporting results. See https://kb.soos.io/help/soos-reports-for-export for valid options.",
+      "defaultValue": "not_set",
+      "options": {
+        "not_set": "<Not Set>",
+        "Csv": "Csv",
+        "Html": "Html",
+        "Json": "Json",
+        "Text": "Text",
+        "Xml": "Xml"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
+    },
 
     {
       "name": "projectPath",
-      "aliases": ["path"],
+      "aliases": ["path", "sourceCodePath"],
       "groupName": "SCA-SAST",
       "type": "string",
-      "label": "Project Path",
+      "label": "Project (Source Code) Path",
       "helpMarkDown": "The relative path to the project root. Defaults to 'Build.SourcesDirectory'. (Where the files to scan are located)"
     },
     {

@@ -1,7 +1,12 @@
 import { ensureEnumValue, ensureValue } from "./../utils/Utilities";
 import * as Task from "azure-pipelines-task-lib/task";
 import { getTaskOperatingSystemName, getTaskVersion } from "../utils/TaskUtilities";
-import { OutputFormat, LogLevel, OnFailure } from "@soos-io/api-client";
+import {
+  AttributionFileTypeEnum,
+  AttributionFormatEnum,
+  LogLevel,
+  OnFailure,
+} from "@soos-io/api-client";
 
 export type ISharedScanParameters = {
   apiKey: string;
@@ -18,18 +23,25 @@ export type ISharedScanParameters = {
   logLevel: LogLevel;
   onFailure: OnFailure;
   operatingEnvironment: string;
-  outputFormat: OutputFormat | undefined;
+  exportFormat?: AttributionFormatEnum;
+  exportFileType?: AttributionFileTypeEnum;
   projectName: string;
   workingDirectory?: string;
 };
 
 export const checkDeprecatedParameters = (): string | null => {
-  // NOTE: use this method when deprecating parmaters
-  return null;
+  // NOTE: use this method when deprecating parameters
+  const outputFormat = Task.getInput("outputFormat");
+  return outputFormat
+    ? "outputFormat is deprecated and has no effect. Use exportFormat and exportFileType."
+    : null;
 };
 
 export const getSharedScanParameters = (): ISharedScanParameters => {
-  const outputFormatInput = Task.getInput("outputFormat") ?? "not_set"; // NOTE: only valid as the default option for the task input
+  // NOTE: only valid as the default option for these task inputs
+  const exportFormatInput = Task.getInput("exportFormat") ?? "not_set";
+  const exportFileTypeInput = Task.getInput("exportFileType") ?? "not_set";
+
   return {
     apiKey: Task.getInputRequired("apiKey"),
     appVersion: getTaskVersion(),
@@ -49,10 +61,14 @@ export const getSharedScanParameters = (): ISharedScanParameters => {
     logLevel: ensureEnumValue<LogLevel>(LogLevel, Task.getInput("logLevel")) ?? LogLevel.INFO,
     operatingEnvironment: getTaskOperatingSystemName(),
     onFailure: ensureEnumValue(OnFailure, Task.getInput("onFailure")) ?? OnFailure.Continue,
-    outputFormat:
-      outputFormatInput === "not_set"
+    exportFormat:
+      exportFormatInput === "not_set"
         ? undefined
-        : ensureEnumValue<OutputFormat>(OutputFormat, outputFormatInput),
+        : ensureEnumValue<AttributionFormatEnum>(AttributionFormatEnum, exportFormatInput),
+    exportFileType:
+      exportFileTypeInput === "not_set"
+        ? undefined
+        : ensureEnumValue<AttributionFileTypeEnum>(AttributionFileTypeEnum, exportFileTypeInput),
     projectName: ensureValue(
       Task.getInput("project") ??
         Task.getInput("projectName") ??
@@ -77,6 +93,7 @@ export type ISharedDockerParameters = {
   logLevel: LogLevel;
   onFailure?: OnFailure;
   operatingEnvironment: string;
-  outputFormat?: string;
+  exportFormat?: AttributionFormatEnum;
+  exportFileType?: AttributionFileTypeEnum;
   projectName: string;
 };

@@ -33,7 +33,8 @@ Here is a **README.md** table for your task inputs, organized by parameter group
 | `buildUri` | Link to the current build (Defaults: `Build.BuildUri`) | N/A |
 | `logLevel` | Minimum log level. Options: DEBUG, INFO, WARN, FAIL, ERROR | `INFO` |
 | `onFailure` | Action when scan fails. Options: continue_on_failure, fail_the_build | `continue_on_failure` |
-| `outputFormat` | Log the output to the console. Options: `<Not Set>`, SARIF | `not_set` |
+| `exportFormat` | Write the scan result to this file format. Options: `<Not Set>`, CsafVex, CycloneDx, Sarif, Spdx, SoosIssues, SoosLicenses, SoosPackages, SoosVulnerabilities | `not_set` |
+| `exportFileType` | Write the scan result to this file type (when used with exportFormat). Options: `<Not Set>`, Csv, Html, Json, Text, Xml  | `not_set` |
 
 ---
 
