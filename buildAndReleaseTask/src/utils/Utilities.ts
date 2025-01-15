@@ -50,7 +50,8 @@ export const ensureEnumValue = <
   enumObject: TEnumObject,
   value: string | undefined,
 ): T | undefined => {
-  return ensureValueIsOneOf(Object.values(enumObject), value);
+  const options = Object.values(enumObject).filter((o) => o !== "Unknown"); // exclude the usual default value
+  return ensureValueIsOneOf(options, value);
 };
 
 /*

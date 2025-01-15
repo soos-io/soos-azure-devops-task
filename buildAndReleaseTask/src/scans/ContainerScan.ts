@@ -68,7 +68,8 @@ class ContainerScan {
       logLevel: this.parameters.logLevel,
       onFailure: this.parameters.onFailure,
       operatingEnvironment: this.parameters.operatingEnvironment,
-      outputFormat: this.parameters.outputFormat?.toLocaleLowerCase() ?? undefined,
+      exportFormat: this.parameters.exportFormat,
+      exportFileType: this.parameters.exportFileType,
       otherOptions: this.parameters.otherOptions,
       projectName: this.parameters.projectName,
     };
