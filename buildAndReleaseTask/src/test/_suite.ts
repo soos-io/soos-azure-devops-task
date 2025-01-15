@@ -135,7 +135,7 @@ describe("Security Scans", () => {
 
     it("should succeed when waiting for the scan output", async () => {
       // Given
-      const testPath = path.join(__dirname, "ScaScan/OutputFormat");
+      const testPath = path.join(__dirname, "ScaScan/ExportFormat");
       const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 
