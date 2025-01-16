@@ -25,7 +25,7 @@ exec[
 };
 
 exec[
-  `docker run --rm -v /home/vsts/work/1/s:/usr/src/app/results:rw soosio/csa:latest --apiKey=apikey123 --appVersion=0.0.0 --apiURL=https://dev-api.soos.io/api/ --clientId=clientid123 --integrationName=AzureDevOps --integrationType=Plugin --logLevel=INFO --onFailure=continue_on_failure --projectName=alpine alpine`
+  `docker run --rm -v /home/vsts/work/1/s:/usr/src/app:rw soosio/csa:latest --apiKey=apikey123 --appVersion=0.0.0 --apiURL=https://dev-api.soos.io/api/ --clientId=clientid123 --integrationName=AzureDevOps --integrationType=Plugin --logLevel=INFO --onFailure=continue_on_failure --projectName=alpine alpine`
 ] = {
   code: 0,
   stdout: "SOOS CSA Analysis successful",
