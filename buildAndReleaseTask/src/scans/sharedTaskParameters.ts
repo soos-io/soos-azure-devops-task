@@ -23,6 +23,7 @@ export type ISharedScanParameters = {
   logLevel: LogLevel;
   onFailure: OnFailure;
   operatingEnvironment: string;
+  outputDirectory?: string;
   exportFormat?: AttributionFormatEnum;
   exportFileType?: AttributionFileTypeEnum;
   projectName: string;
@@ -31,10 +32,7 @@ export type ISharedScanParameters = {
 
 export const checkDeprecatedParameters = (): string | null => {
   // NOTE: use this method when deprecating parameters
-  const outputFormat = Task.getInput("outputFormat");
-  return outputFormat
-    ? "outputFormat is deprecated and has no effect. Use exportFormat and exportFileType."
-    : null;
+  return null;
 };
 
 export const getSharedScanParameters = (): ISharedScanParameters => {
@@ -60,6 +58,7 @@ export const getSharedScanParameters = (): ISharedScanParameters => {
     integrationType: "Plugin",
     logLevel: ensureEnumValue<LogLevel>(LogLevel, Task.getInput("logLevel")) ?? LogLevel.INFO,
     operatingEnvironment: getTaskOperatingSystemName(),
+    outputDirectory: undefined,
     onFailure: ensureEnumValue(OnFailure, Task.getInput("onFailure")) ?? OnFailure.Continue,
     exportFormat:
       exportFormatInput === "not_set"
@@ -75,6 +74,7 @@ export const getSharedScanParameters = (): ISharedScanParameters => {
         Task.getVariable("Build.Repository.Name"),
       "projectName",
     ),
+    workingDirectory: undefined,
   };
 };
 

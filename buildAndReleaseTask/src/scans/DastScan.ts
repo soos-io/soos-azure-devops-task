@@ -148,6 +148,7 @@ class DastScan {
       dockerImage: "soosio/dast",
       dockerImageTag: Task.getInput("dockerImageTag") ?? "latest",
       oauthTokenUrl: Task.getInput("oauthTokenUrl"),
+      outputDirectory: undefined,
       otherOptions: Task.getInput("otherOptions"),
       requestHeaders: Task.getInput("requestHeaders"),
       scanDurationInMinutes: isNil(scanDurationInMinutes)

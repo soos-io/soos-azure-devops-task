@@ -46,6 +46,7 @@ Here is a **README.md** table for your task inputs, organized by parameter group
 | `projectPath` | Relative path to the project root (Defaults: `Build.SourcesDirectory`) | N/A |
 | `excludedDirectories` | Directory glob patterns to exclude | `""` |
 | `excludedFiles` | File glob patterns to exclude | `""` |
+| `outputDirectory` | Export file path (Defaults: `Build.SourcesDirectory`) | N/A |
 
 ---
 
@@ -56,6 +57,7 @@ Here is a **README.md** table for your task inputs, organized by parameter group
 | `projectPath` | Relative path to the project root (Defaults: `Build.SourcesDirectory`) | N/A |
 | `excludedDirectories` | Directory glob patterns to exclude | `""` |
 | `excludedFiles` | File glob patterns to exclude | `""` |
+| `outputDirectory` | Export file path (Defaults: `Build.SourcesDirectory`) | N/A |
 
 ---
 
@@ -107,6 +109,7 @@ Here is a **README.md** table for your task inputs, organized by parameter group
 | Parameter Name | Description | Default/Initial Value |
 |----------------|-------------|-----------------------|
 | `sbomPath` | SBOM file or folder to scan | Root of the pipeline (if not specified) |
+| `outputDirectory` | Export file path (Defaults: `Build.SourcesDirectory`) | N/A |
 
 ---
 
