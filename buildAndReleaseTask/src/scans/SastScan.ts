@@ -41,6 +41,10 @@ class SastScan {
         Task.getDelimitedInput("excludedDirectories", ","),
       ),
       filesToExclude: Task.getDelimitedInput("excludedFiles", ",").map((d) => d.trim()),
+      outputDirectory:
+        Task.getInput("outputDirectory") ??
+        Task.getVariable("Build.SourcesDirectory") ??
+        process.cwd(),
       sourceCodePath:
         Task.getInput("path") ??
         Task.getInput("projectPath") ??
@@ -71,6 +75,7 @@ class SastScan {
       logLevel: this.parameters.logLevel,
       onFailure: this.parameters.onFailure,
       operatingEnvironment: this.parameters.operatingEnvironment,
+      outputDirectory: this.parameters.outputDirectory,
       exportFormat: this.parameters.exportFormat,
       exportFileType: this.parameters.exportFileType,
       projectName: this.parameters.projectName,

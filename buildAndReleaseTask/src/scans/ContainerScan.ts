@@ -41,6 +41,7 @@ class ContainerScan {
       dockerImage: "soosio/csa",
       dockerImageTag: Task.getInput("dockerImageTag") ?? "latest",
       otherOptions: Task.getInput("otherOptions"),
+      outputDirectory: undefined,
       targetToScan: Task.getInputRequired("targetToScan"),
       workingDirectory:
         Task.getInput("workingDirectory") ??

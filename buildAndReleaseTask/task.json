@@ -156,20 +156,6 @@
       "helpMarkDown": "The link to the current build. Defaults to 'Build.BuildUri'."
     },
     {
-      "name": "outputFormat",
-      "type": "pickList",
-      "label": "DEPRECATED - Output Format",
-      "helpMarkDown": "DEPRECATED - this parameter has no effect. Use exportFormat and exportFileType.",
-      "defaultValue": "not_set",
-      "options": {
-        "not_set": "<Not Set>",
-        "SARIF": "SARIF"
-      },
-      "properties": {
-        "EditableOptions": "False"
-      }
-    },
-    {
       "name": "exportFormat",
       "type": "pickList",
       "label": "Export Format",
@@ -261,11 +247,19 @@
       "helpMarkDown": "A list of files glob patterns, delimited by comma, to exclude when searching for manifest or SBOM files. (e.g. '**/requirements.txt')"
     },
     {
+      "name": "outputDirectory",
+      "groupName": "SCA-SAST-SBOM",
+      "type": "string",
+      "defaultValue": "",
+      "label": "Export file path",
+      "helpMarkDown": "The directory to export scans to. Defaults to 'Build.SourcesDirectory'."
+    },
+    {
       "name": "workingDirectory",
       "groupName": "Docker",
       "type": "string",
       "label": "Working Directory",
-      "helpMarkDown": "The working directory mounted for container to access files. Defaults to 'Build.SourcesDirectory'."
+      "helpMarkDown": "The working directory mounted for container to access files and exports. Defaults to 'Build.SourcesDirectory'."
     },
     {
       "name": "targetUri",

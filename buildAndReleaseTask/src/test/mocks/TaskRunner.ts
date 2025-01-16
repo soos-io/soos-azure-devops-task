@@ -15,5 +15,6 @@ TaskRunner.setInput("integrationName", "mocha test run");
 TaskRunner.setInput("baseUri", "https://dev-api.soos.io/api/");
 TaskRunner.setInput("projectPath", "/home/vsts/work/1/s");
 TaskRunner.setInput("workingDirectory", "/home/vsts/work/1/s");
+TaskRunner.setInput("outputDirectory", "/output");
 
 export default TaskRunner;

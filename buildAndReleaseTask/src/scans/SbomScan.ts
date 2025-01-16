@@ -40,6 +40,10 @@ class SbomScan {
         Task.getDelimitedInput("excludedDirectories", ","),
       ),
       filesToExclude: Task.getDelimitedInput("excludedFiles", ",").map((pm) => pm.trim()),
+      outputDirectory:
+        Task.getInput("outputDirectory") ??
+        Task.getVariable("Build.SourcesDirectory") ??
+        process.cwd(),
       sbomPath:
         Task.getInput("sbomPath") ?? Task.getVariable("Build.SourcesDirectory") ?? process.cwd(),
     };
@@ -65,11 +69,13 @@ class SbomScan {
       logLevel: this.parameters.logLevel,
       onFailure: this.parameters.onFailure,
       operatingEnvironment: this.parameters.operatingEnvironment,
+      outputDirectory: this.parameters.outputDirectory,
       exportFormat: this.parameters.exportFormat,
       exportFileType: this.parameters.exportFileType,
       projectName: this.parameters.projectName,
       directoriesToExclude: this.parameters.directoriesToExclude,
       filesToExclude: this.parameters.filesToExclude,
+      workingDirectory: undefined,
     };
 
     const cliArguments = mapToCliArguments(args);

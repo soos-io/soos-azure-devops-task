@@ -13,7 +13,7 @@ exec["npm install --prefix ./soos @soos-io/soos-sbom@latest"] = {
   stdout: "run `npm fund` for details",
 };
 exec[
-  `node ./soos/node_modules/@soos-io/soos-sbom/bin/index.js --apiKey="apikey123" --appVersion="0.0.0" --apiURL="https://dev-api.soos.io/api/" --clientId="clientid123" --integrationName="AzureDevOps" --integrationType="Plugin" --logLevel="INFO" --onFailure="continue_on_failure" --projectName="test-sbom-azuretask" --directoriesToExclude="**/node_modules/**,**/bin/**,**/obj/**,**/lib/**,**/soos/**" --filesToExclude="" C:\\temp\\sbom.spdx.json`
+  `node ./soos/node_modules/@soos-io/soos-sbom/bin/index.js --apiKey="apikey123" --appVersion="0.0.0" --apiURL="https://dev-api.soos.io/api/" --clientId="clientid123" --integrationName="AzureDevOps" --integrationType="Plugin" --logLevel="INFO" --onFailure="continue_on_failure" --outputDirectory="/output" --projectName="test-sbom-azuretask" --directoriesToExclude="**/node_modules/**,**/bin/**,**/obj/**,**/lib/**,**/soos/**" --filesToExclude="" C:\\temp\\sbom.spdx.json`
 ] = {
   code: 0,
   stdout: "SOOS SBOM Analysis successful",

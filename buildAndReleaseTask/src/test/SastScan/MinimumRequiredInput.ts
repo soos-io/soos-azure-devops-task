@@ -12,7 +12,7 @@ exec["npm install --prefix ./soos @soos-io/soos-sast@latest"] = {
   stdout: "run `npm fund` for details",
 };
 exec[
-  `node ./soos/node_modules/@soos-io/soos-sast/bin/index.js --apiKey="apikey123" --appVersion="0.0.0" --apiURL="https://dev-api.soos.io/api/" --clientId="clientid123" --directoriesToExclude="**/node_modules/**,**/bin/**,**/obj/**,**/lib/**,**/soos/**" --filesToExclude="" --integrationName="AzureDevOps" --integrationType="Plugin" --logLevel="INFO" --onFailure="continue_on_failure" --projectName="test-sast-azuretask" --sourceCodePath="/home/vsts/work/1/s"`
+  `node ./soos/node_modules/@soos-io/soos-sast/bin/index.js --apiKey="apikey123" --appVersion="0.0.0" --apiURL="https://dev-api.soos.io/api/" --clientId="clientid123" --directoriesToExclude="**/node_modules/**,**/bin/**,**/obj/**,**/lib/**,**/soos/**" --filesToExclude="" --integrationName="AzureDevOps" --integrationType="Plugin" --logLevel="INFO" --onFailure="continue_on_failure" --outputDirectory="/output" --projectName="test-sast-azuretask" --sourceCodePath="/home/vsts/work/1/s"`
 ] = {
   code: 0,
   stdout: "SOOS SAST Analysis successful",
