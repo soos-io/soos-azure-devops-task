@@ -83,7 +83,7 @@ class ContainerScan {
 
     const cliArguments = mapToCliArguments(args);
 
-    const commandArguments = `--rm -v ${this.parameters.workingDirectory}:/usr/src/app/results:rw ${this.parameters.dockerImage}:${this.parameters.dockerImageTag} ${cliArguments} ${this.parameters.targetToScan}`;
+    const commandArguments = `--rm -v ${this.parameters.workingDirectory}:/usr/src/app:rw ${this.parameters.dockerImage}:${this.parameters.dockerImageTag} ${cliArguments} ${this.parameters.targetToScan}`;
     soosLogger.info(`Command Arguments: ${commandArguments}`);
 
     await runDockerCommandAndSetTaskStatus(ScanType.CSA, commandArguments);
