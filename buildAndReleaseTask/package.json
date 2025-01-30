@@ -28,7 +28,7 @@
     "clean:all": "npm run clean && npm run setup:clean"
   },
   "dependencies": {
-    "@soos-io/api-client": "1.1.7",
+    "@soos-io/api-client": "1.1.8",
     "argparse": "^2.0.1",
     "axios": "^1.7.7",
     "azure-pipelines-task-lib": "^4.17.2",
