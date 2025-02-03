@@ -120,7 +120,9 @@
     },
     {
       "name": "projectName",
-      "aliases": ["project"],
+      "aliases": [
+        "project"
+      ],
       "type": "string",
       "label": "Project Name",
       "helpMarkDown": "The name of the project. Defaults to 'Build.Repository.Name'."
@@ -194,14 +196,32 @@
         "EditableOptions": "False"
       }
     },
-
     {
       "name": "projectPath",
-      "aliases": ["path", "sourceCodePath"],
+      "aliases": [
+        "path",
+        "sourceCodePath"
+      ],
       "groupName": "SCA-SAST",
       "type": "string",
       "label": "Project (Source Code) Path",
       "helpMarkDown": "The relative path to the project root. Defaults to 'Build.SourcesDirectory'. (Where the files to scan are located)"
+    },
+    {
+      "name": "fileMatchType",
+      "groupName": "SCA",
+      "type": "pickList",
+      "label": "File Match Type",
+      "helpMarkDown": "The method to use to locate files for scanning, looking for manifest files and/or files to hash.",
+      "defaultValue": "Manifest",
+      "options": {
+        "Manifest": "Manifest",
+        "ManifestAndFileHash": "ManifestAndFileHash",
+        "FileHash": "FileHash"
+      },
+      "properties": {
+        "EditableOptions": "False"
+      }
     },
     {
       "name": "packageManagers",
