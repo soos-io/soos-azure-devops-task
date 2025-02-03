@@ -50,7 +50,7 @@ class ScaScan {
     const sharedParameters = getSharedScanParameters();
 
     const contributingDeveloper = getContributingDeveloper();
-    const fileMatchTypeInput = Task.getInput("fileMatchType") ?? undefined;
+    const fileMatchTypeInput = Task.getInput("fileMatchType");
 
     this.parameters = {
       ...sharedParameters,
