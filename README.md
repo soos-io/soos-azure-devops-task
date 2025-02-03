@@ -46,6 +46,7 @@ Here is a **README.md** table for your task inputs, organized by parameter group
 | `projectPath` | Relative path to the project root (Defaults: `Build.SourcesDirectory`) | N/A |
 | `excludedDirectories` | Directory glob patterns to exclude | `""` |
 | `excludedFiles` | File glob patterns to exclude | `""` |
+| `fileMatchType` | The method to use to locate files for scanning, looking for manifest files and/or files to hash. | `"Manifest"` |
 | `outputDirectory` | Export file path (Defaults: `Build.SourcesDirectory`) | N/A |
 
 ---
