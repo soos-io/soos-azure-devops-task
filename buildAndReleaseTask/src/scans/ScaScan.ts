@@ -1,11 +1,16 @@
 import * as Task from "azure-pipelines-task-lib/task";
-import { getExcludeDirectories, mapToCliArguments, obfuscateProperties } from "../utils/Utilities";
+import {
+  ensureEnumValue,
+  getExcludeDirectories,
+  mapToCliArguments,
+  obfuscateProperties,
+} from "../utils/Utilities";
 import {
   checkDeprecatedParameters,
   getSharedScanParameters,
   ISharedScanParameters,
 } from "./sharedTaskParameters";
-import { ScanType, soosLogger } from "@soos-io/api-client";
+import { FileMatchTypeEnum, ScanType, soosLogger } from "@soos-io/api-client";
 import { getContributingDeveloper, setTaskStatusFromCode } from "../utils/TaskUtilities";
 
 export interface IManifestFile {
@@ -22,6 +27,7 @@ type IScaScanScriptParameters = ISharedScanParameters & {
   filesToExclude: Array<string>;
   sourceCodePath: string;
   packageManagers: Array<string>;
+  fileMatchType: FileMatchTypeEnum;
 };
 
 type IScaScanParameters = IScaScanScriptParameters & {
@@ -44,6 +50,7 @@ class ScaScan {
     const sharedParameters = getSharedScanParameters();
 
     const contributingDeveloper = getContributingDeveloper();
+    const fileMatchTypeInput = Task.getInput("fileMatchType");
 
     this.parameters = {
       ...sharedParameters,
@@ -60,6 +67,10 @@ class ScaScan {
         Task.getVariable("Build.SourcesDirectory") ??
         process.cwd(),
       packageManagers: Task.getDelimitedInput("packageManagers", ",").map((pm) => pm.trim()),
+      fileMatchType: !fileMatchTypeInput
+        ? FileMatchTypeEnum.Manifest
+        : (ensureEnumValue<FileMatchTypeEnum>(FileMatchTypeEnum, fileMatchTypeInput) ??
+          FileMatchTypeEnum.Manifest),
       sourceCodePath:
         Task.getInput("path") ??
         Task.getInput("projectPath") ??
@@ -88,6 +99,7 @@ class ScaScan {
       contributingDeveloperSourceName: this.parameters.contributingDeveloperSourceName,
       directoriesToExclude: this.parameters.directoriesToExclude,
       filesToExclude: this.parameters.filesToExclude,
+      fileMatchType: this.parameters.fileMatchType,
       integrationName: this.parameters.integrationName,
       integrationType: this.parameters.integrationType,
       logLevel: this.parameters.logLevel,
