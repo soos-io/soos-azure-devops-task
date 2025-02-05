@@ -50,7 +50,6 @@ class ScaScan {
     const sharedParameters = getSharedScanParameters();
 
     const contributingDeveloper = getContributingDeveloper();
-    const fileMatchTypeInput = Task.getInput("fileMatchType");
 
     this.parameters = {
       ...sharedParameters,
@@ -67,10 +66,9 @@ class ScaScan {
         Task.getVariable("Build.SourcesDirectory") ??
         process.cwd(),
       packageManagers: Task.getDelimitedInput("packageManagers", ",").map((pm) => pm.trim()),
-      fileMatchType: !fileMatchTypeInput
-        ? FileMatchTypeEnum.Manifest
-        : (ensureEnumValue<FileMatchTypeEnum>(FileMatchTypeEnum, fileMatchTypeInput) ??
-          FileMatchTypeEnum.Manifest),
+      fileMatchType:
+        ensureEnumValue<FileMatchTypeEnum>(FileMatchTypeEnum, Task.getInput("fileMatchType")) ??
+        FileMatchTypeEnum.Manifest,
       sourceCodePath:
         Task.getInput("path") ??
         Task.getInput("projectPath") ??
