@@ -21,7 +21,6 @@
     "test": "npm run build && mocha build/test/_suite.js",
     "test:coverage": "npm run test -- --reporter xunit --reporter-option output=ResultsFile.xml",
     "check": "npm run format && npm run typecheck && npm run test && npm outdated",
-    "check:for-pipeline": "npm run format && npm run typecheck && npm outdated",
     "link:soos-api-client": "npm link @soos-io/api-client && npm run build && npm link",
     "patch-api-client": "npm run clean:all && npm install @soos-io/api-client@latest --save-exact && npm install && npm run check",
     "clean": "npm run build:clean && npm run lint:clean",
