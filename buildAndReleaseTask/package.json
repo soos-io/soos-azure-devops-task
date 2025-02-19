@@ -1,6 +1,6 @@
 {
   "name": "soos-azure-devops-task",
-  "description": "SOOS Azure DevOps Security Analysis Task",
+  "description": "SOOS Azure DevOps Security Analysis Task. Run SOOS SCA, DAST, SAST, SBOM, and Container analysis from your Azure DevOps pipeline. Register for a free trial at https://app.soos.io/register",
   "author": "SOOS",
   "publisher": "SOOS",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "clean:all": "npm run clean && npm run setup:clean"
   },
   "dependencies": {
-    "@soos-io/api-client": "1.1.8",
+    "@soos-io/api-client": "1.1.9",
     "argparse": "^2.0.1",
     "axios": "^1.7.7",
     "azure-pipelines-task-lib": "^5.0.0",
