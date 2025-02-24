@@ -118,17 +118,18 @@ class ScaScan {
   }
 
   async runSca(scriptVersion: string, args: string): Promise<number> {
-    return new Promise(async (resolve) => {
-      await Task.execAsync("npm", `install --prefix ./soos @soos-io/soos-sca@${scriptVersion}`, {
-        shell: true,
-      });
-      await Task.execAsync("node", `./soos/node_modules/@soos-io/soos-sca/bin/index.js ${args}`, {
+    await Task.execAsync("npm", `install --prefix ./soos @soos-io/soos-sca@${scriptVersion}`, {
+      shell: true,
+    });
+    const exitCode = await Task.execAsync(
+      "node",
+      `./soos/node_modules/@soos-io/soos-sca/bin/index.js ${args}`,
+      {
         shell: true,
         ignoreReturnCode: true,
-      }).then((code) => {
-        return resolve(code);
-      });
-    });
+      },
+    );
+    return exitCode;
   }
 }
 

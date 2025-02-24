@@ -17,7 +17,7 @@ export const mapToCliArguments = (
   parameters: Record<string, string | string[] | number | boolean | null | undefined>,
 ): string => {
   return Object.entries(parameters)
-    .filter(([_key, value]) => !isNil(value))
+    .filter(([, value]) => !isNil(value))
     .map(([key, value]) => {
       if (typeof value === "boolean") {
         return value ? `--${key}` : "";
