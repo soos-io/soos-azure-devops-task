@@ -161,7 +161,7 @@
       "name": "exportFormat",
       "type": "pickList",
       "label": "Export Format",
-      "helpMarkDown": "The file format to use when exporting results. See https://kb.soos.io/help/soos-reports-for-export for valid options.",
+      "helpMarkDown": "The file format to use when exporting results. See https://kb.soos.io/project-exports-and-reports for valid options.",
       "defaultValue": "not_set",
       "options": {
         "not_set": "<Not Set>",
@@ -182,7 +182,7 @@
       "name": "exportFileType",
       "type": "pickList",
       "label": "Export File Type",
-      "helpMarkDown": "The file type to use when exporting results. See https://kb.soos.io/help/soos-reports-for-export for valid options.",
+      "helpMarkDown": "The file type to use when exporting results. See https://kb.soos.io/project-exports-and-reports for valid options.",
       "defaultValue": "not_set",
       "options": {
         "not_set": "<Not Set>",
