@@ -24,11 +24,11 @@
     "check": "npm run format && npm run lint && npm run typecheck && npm run test && npm outdated",
     "link:soos-api-client": "npm link @soos-io/api-client && npm run build && npm link",
     "patch-api-client": "npm run clean:all && npm install @soos-io/api-client@latest --save-exact && npm install && npm run check",
-    "clean": "npm run build:clean && npm run lint:clean",
+    "clean": "npm run build:clean",
     "clean:all": "npm run clean && npm run setup:clean"
   },
   "dependencies": {
-    "@soos-io/api-client": "1.2.0",
+    "@soos-io/api-client": "1.2.2",
     "argparse": "^2.0.1",
     "axios": "^1.7.7",
     "azure-pipelines-task-lib": "^5.0.0",
