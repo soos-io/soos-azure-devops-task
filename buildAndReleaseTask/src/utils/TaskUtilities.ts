@@ -89,7 +89,6 @@ export const setTaskStatusFromCode = (code: number, scanType: ScanType): void =>
 export const runDockerCommandAndSetTaskStatus = async (
   scanType: ScanType,
   commandArguments: string,
-  exitCodeRegex: RegExp = /exit (\d+)/i,
 ): Promise<void> => {
   const connection = new ContainerConnection(true);
   const command = connection.createCommand();
@@ -97,17 +96,12 @@ export const runDockerCommandAndSetTaskStatus = async (
   command.arg("run");
   command.line(commandArguments);
 
-  let stdoutOutput = "";
-  command.on("stdout", (data) => {
-    stdoutOutput += data;
-  });
-
-  const handleExit = () => {
-    const exitCodeMatch = stdoutOutput.match(exitCodeRegex);
-    soosLogger.debug(`exitCodeMatch: ${exitCodeMatch}`);
-    const exitCode = exitCodeMatch ? Number(exitCodeMatch[1]) : 0;
+  try {
+    const exitCode = await command.execAsync({
+      ignoreReturnCode: true,
+    });
     setTaskStatusFromCode(exitCode, scanType);
-  };
-
-  await connection.execCommand(command).then(handleExit).catch(handleExit);
+  } catch {
+    setTaskStatusFromCode(1, scanType);
+  }
 };
