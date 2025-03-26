@@ -3,7 +3,6 @@ import * as FileSystem from "fs";
 import * as Path from "path";
 import {
   ICreateScanRequestContributingDeveloperAudit,
-  SOOS_CONSTANTS,
   ScanType,
   soosLogger,
 } from "@soos-io/api-client";
@@ -11,9 +10,7 @@ import ContainerConnection from "azure-pipelines-tasks-docker-common/containerco
 
 export const getTaskVersion = (): string => {
   const taskJsonPath = Path.resolve(__dirname, "..", "..", "task.json");
-  const version = JSON.parse(
-    FileSystem.readFileSync(taskJsonPath, SOOS_CONSTANTS.FileUploads.Encoding),
-  ).version;
+  const version = JSON.parse(FileSystem.readFileSync(taskJsonPath, "utf-8")).version;
   return `${version.Major}.${version.Minor}.${version.Patch}`;
 };
 
