@@ -513,20 +513,6 @@
       "helpMarkDown": "Enables ZAP debug logging."
     },
     {
-      "name": "oauthTokenUrl",
-      "groupName": "DAST",
-      "type": "string",
-      "label": "OAuth Token URL",
-      "helpMarkDown": "The fully qualified authentication URL that grants the access_token."
-    },
-    {
-      "name": "oauthParameters",
-      "groupName": "DAST",
-      "type": "string",
-      "label": "OAuth Parameters",
-      "helpMarkDown": "Parameters added to the OAuth token request. Example: client_id:value, client_secret:value, grant_type:value"
-    },
-    {
       "name": "zapOptions",
       "groupName": "DAST",
       "type": "string",
