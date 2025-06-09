@@ -91,8 +91,6 @@ Here is a **README.md** table for your task inputs, organized by parameter group
 | `authSubmitAction` | Submit button action | Options: Click, Submit |
 | `authDelayTime` | Delay time (seconds) after form actions | N/A |
 | `authVerificationURL` | URL to verify authentication success | N/A |
-| `oauthTokenUrl` | OAuth token URL | N/A |
-| `oauthParameters` | OAuth parameters | N/A |
 | `otherOptions` | Additional options for ZAP or Syft | N/A |
 | `workingDirectory` | Working directory for container (Defaults: `Build.SourcesDirectory`) | N/A |
 | `zapOptions` | Additional ZAP command-line options | N/A |

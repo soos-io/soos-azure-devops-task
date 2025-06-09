@@ -60,8 +60,6 @@ type IDastScanParameters = ISharedScanParameters & {
   disableRules?: string;
   dockerImage: string;
   dockerImageTag: string;
-  oauthParameters?: string;
-  oauthTokenUrl?: string;
   otherOptions?: string;
   requestHeaders?: string;
   scanDurationInMinutes?: number;
@@ -90,8 +88,6 @@ type IDastDockerContainerArguments = ISharedDockerParameters & {
   debug?: boolean;
   disableRules?: string;
   fullScanMinutes?: number;
-  oauthParameters?: string;
-  oauthTokenUrl?: string;
   requestHeaders?: string;
   scanMode: ScanModeEnum;
   zapOptions?: string;
@@ -147,7 +143,6 @@ class DastScan {
       disableRules: Task.getInput("disableRules"),
       dockerImage: "soosio/dast",
       dockerImageTag: Task.getInput("dockerImageTag") ?? "latest",
-      oauthTokenUrl: Task.getInput("oauthTokenUrl"),
       outputDirectory: undefined,
       otherOptions: Task.getInput("otherOptions"),
       requestHeaders: Task.getInput("requestHeaders"),
@@ -211,8 +206,6 @@ class DastScan {
       authDelayTime: this.parameters.authDelayTime,
       authSubmitAction: this.parameters.authSubmitAction,
       authVerificationURL: this.parameters.authVerificationURL,
-      oauthTokenUrl: this.parameters.oauthTokenUrl,
-      oauthParameters: this.parameters.oauthParameters,
       zapOptions: this.parameters.zapOptions,
       otherOptions: this.parameters.otherOptions,
     };
