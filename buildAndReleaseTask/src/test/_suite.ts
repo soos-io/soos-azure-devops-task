@@ -15,6 +15,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       console.log("warningIssues", testRunner.warningIssues);
       console.log("errorIssues", testRunner.errorIssues);
@@ -33,6 +34,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.succeeded, "should succeed");
       assert.equal(testRunner.errorIssues.length, 0, "should not have errors");
@@ -48,6 +50,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.succeeded, "should succeed");
       assert.equal(testRunner.errorIssues.length, 0, "should not have errors");
@@ -64,6 +67,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.failed, "should fail");
       assert.equal(testRunner.errorIssues.length, 1, "should have errors");
@@ -80,6 +84,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       console.log("warningIssues", testRunner.warningIssues);
       console.log("errorIssues", testRunner.errorIssues);
@@ -98,6 +103,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.succeeded, "should succeed");
       assert.equal(testRunner.errorIssues.length, 0, "should not have errors");
@@ -113,6 +119,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.succeeded, "should succeed");
       assert.equal(testRunner.errorIssues.length, 0, "should not have errors");
@@ -128,6 +135,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.succeeded, "should succeed");
       assert.equal(testRunner.errorIssues.length, 0, "should not have errors");
@@ -143,6 +151,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.succeeded, "should succeed");
       assert.equal(testRunner.errorIssues.length, 0, "should not have errors");
@@ -158,6 +167,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.succeeded, "should succeed");
       assert.equal(testRunner.errorIssues.length, 0, "should not have errors");
@@ -174,6 +184,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.succeeded, "should succeed");
       assert.equal(testRunner.errorIssues.length, 0, "should not have errors");
@@ -191,6 +202,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.succeeded, "should succeed");
       assert.equal(testRunner.errorIssues.length, 0, "should not have errors");
@@ -208,6 +220,7 @@ describe("Security Scans", () => {
       await testRunner.runAsync();
 
       // Then
+      console.log(testRunner.stderr);
       console.log(testRunner.stdout);
       assert.ok(testRunner.succeeded, "should succeed");
       assert.equal(testRunner.errorIssues.length, 0, "should not have errors");
