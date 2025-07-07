@@ -218,7 +218,7 @@ class DastScan {
 
     const cliArguments = mapToCliArguments(args);
 
-    const commandArguments = `--rm -v ${this.parameters.workingDirectory}:/zap/wrk:rw ${this.parameters.dockerImage}:${this.parameters.dockerImageTag} ${cliArguments} ${this.parameters.targetUri}`;
+    const commandArguments = `-u zap --rm -v ${this.parameters.workingDirectory}:/zap/wrk:rw ${this.parameters.dockerImage}:${this.parameters.dockerImageTag} ${cliArguments} ${this.parameters.targetUri}`;
     soosLogger.info(`Command Arguments: ${commandArguments}`);
 
     await runDockerCommandAndSetTaskStatus(ScanType.DAST, commandArguments);
