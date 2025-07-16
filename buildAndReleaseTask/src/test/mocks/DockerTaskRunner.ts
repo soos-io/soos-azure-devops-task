@@ -4,21 +4,21 @@ import DockerTaskRunner from "./TaskRunner";
 const exec: Record<string, TaskLibAnswerExecResult> = {};
 
 exec[
-  `docker run --rm -v /home/vsts/work/1/s:/zap/wrk:rw soosio/dast:latest --apiKey=apikey123 --clientId=clientid123 --projectName=Juice Shop --scanMode=baseline --onFailure=continue_on_failure --apiURL=https://dev-api.soos.io/api/ --integrationType=Plugin --integrationName=AzureDevOps --appVersion=0.0.0 --logLevel=INFO https://juice-shop.herokuapp.com`
+  `docker run -u zap --rm -v /home/vsts/work/1/s:/zap/wrk:rw soosio/dast:latest --apiKey=apikey123 --clientId=clientid123 --projectName=Juice Shop --scanMode=baseline --onFailure=continue_on_failure --apiURL=https://dev-api.soos.io/api/ --integrationType=Plugin --integrationName=AzureDevOps --appVersion=0.0.0 --logLevel=INFO https://juice-shop.herokuapp.com`
 ] = {
   code: 0,
   stdout: "SOOS DAST Analysis successful",
 };
 
 exec[
-  `docker run --rm -v /home/vsts/work/1/s:/zap/wrk:rw soosio/dast:latest --apiKey=apikey123 --clientId=clientid123 --projectName=SOOS's Test --scanMode=baseline --onFailure=continue_on_failure --apiURL=https://dev-api.soos.io/api/ --integrationType=Plugin --integrationName=AzureDevOps --appVersion=0.0.0 --logLevel=INFO --debug https://juice-shop.herokuapp.com`
+  `docker run -u zap --rm -v /home/vsts/work/1/s:/zap/wrk:rw soosio/dast:latest --apiKey=apikey123 --clientId=clientid123 --projectName=SOOS's Test --scanMode=baseline --onFailure=continue_on_failure --apiURL=https://dev-api.soos.io/api/ --integrationType=Plugin --integrationName=AzureDevOps --appVersion=0.0.0 --logLevel=INFO --debug https://juice-shop.herokuapp.com`
 ] = {
   code: 0,
   stdout: "SOOS DAST Analysis successful",
 };
 
 exec[
-  `docker run --rm -v /home/vsts/work/1/s:/zap/wrk:rw soosio/dast:latest --apiKey=apikey123 --clientId=clientid123 --projectName="Juice_Shop" --scanMode="baseline" --onFailure="continue_on_failure" --apiURL="https://dev-api.soos.io/api/" --integrationType="Plugin" --integrationName="AzureDevOps" --appVersion="0.0.0" --logLevel="INFO" http://doesnotexist.soos.io`
+  `docker run -u zap --rm -v /home/vsts/work/1/s:/zap/wrk:rw soosio/dast:latest --apiKey=apikey123 --clientId=clientid123 --projectName="Juice_Shop" --scanMode="baseline" --onFailure="continue_on_failure" --apiURL="https://dev-api.soos.io/api/" --integrationType="Plugin" --integrationName="AzureDevOps" --appVersion="0.0.0" --logLevel="INFO" http://doesnotexist.soos.io`
 ] = {
   code: 1,
   stdout: "The URL http://doesnotexist.soos.io is not available",
