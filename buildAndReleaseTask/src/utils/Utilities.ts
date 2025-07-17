@@ -1,12 +1,7 @@
-export function isNil(value: unknown): value is null | undefined {
-  return value === null || value === undefined;
-}
+export const isNil = (value: unknown): value is null | undefined =>
+  value === null || value === undefined;
 
-export function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-export const removeDuplicates = <T>(list: Array<T>): Array<T> => [...new Set(list)];
+const removeDuplicates = <T>(list: Array<T>): Array<T> => [...new Set(list)];
 
 export const ensureValue = <T>(value: T | null | undefined, propertyName: string): T => {
   if (isNil(value)) throw new Error(`'${propertyName}' is required for task execution.`);
@@ -53,24 +48,6 @@ export const ensureEnumValue = <
   const options = Object.values(enumObject).filter((o) => o !== "Unknown"); // exclude the usual default value
   return ensureValueIsOneOf(options, value);
 };
-
-/*
-Reference: https://stackoverflow.com/a/18650828
-*/
-export function formatBytes(bytes: number, decimals = 2) {
-  if (bytes === 0) return "0 Bytes";
-
-  const kilobyte = 1024;
-  const fractionalDigits = decimals < 0 ? 0 : decimals;
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
-  const exponentialValue = Math.floor(Math.log(bytes) / Math.log(kilobyte));
-  const count = Number.parseFloat(
-    (bytes / Math.pow(kilobyte, exponentialValue)).toFixed(fractionalDigits),
-  );
-  const unit = sizes[exponentialValue];
-  return `${count} ${unit}`;
-}
 
 export const obfuscateProperties = <T extends Record<string, unknown> = Record<string, unknown>>(
   dictionary: T,

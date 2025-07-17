@@ -29,7 +29,7 @@
     "knip": "knip"
   },
   "dependencies": {
-    "@soos-io/api-client": "1.7.1",
+    "@soos-io/api-client": "1.7.2",
     "azure-pipelines-task-lib": "^5.1.0",
     "azure-pipelines-tasks-docker-common": "^2.254.0",
     "core-js": "^3.41.0",
@@ -46,11 +46,5 @@
     "prettier": "^3.3.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.1"
-  },
-  "overrides": {
-    "minimatch": {
-      ".": "10.0.2",
-      "brace-expansion": "2.0.1"
-    }
   }
 }

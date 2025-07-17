@@ -13,12 +13,6 @@ import {
 import { FileMatchTypeEnum, ScanType, soosLogger } from "@soos-io/api-client";
 import { getContributingDeveloper, setTaskStatusFromCode } from "../utils/TaskUtilities";
 
-export interface IManifestFile {
-  packageManager: string;
-  name: string;
-  path: string;
-}
-
 type IScaScanScriptParameters = ISharedScanParameters & {
   contributingDeveloperId?: string;
   contributingDeveloperSource?: string;
