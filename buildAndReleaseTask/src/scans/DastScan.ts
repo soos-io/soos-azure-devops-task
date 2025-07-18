@@ -216,9 +216,13 @@ class DastScan {
       );
     }
 
-    const cliArguments = mapToCliArguments(args);
+    // NOTE: we need to ensure the zap user/group (1000:1000) can write to the mount
+    const zapWorkingDirectory = "/zap/wrk";
+    await Task.execAsync("chown", ["-R", "1000:1000", zapWorkingDirectory]);
+    await Task.execAsync("chmod", ["-R", "770", zapWorkingDirectory]);
 
-    const commandArguments = `-u zap --rm -v ${this.parameters.workingDirectory}:/zap/wrk:rw ${this.parameters.dockerImage}:${this.parameters.dockerImageTag} ${cliArguments} ${this.parameters.targetUri}`;
+    const cliArguments = mapToCliArguments(args);
+    const commandArguments = `-u zap --rm -v ${this.parameters.workingDirectory}:${zapWorkingDirectory}:rw ${this.parameters.dockerImage}:${this.parameters.dockerImageTag} ${cliArguments} ${this.parameters.targetUri}`;
     soosLogger.info(`Command Arguments: ${commandArguments}`);
 
     await runDockerCommandAndSetTaskStatus(ScanType.DAST, commandArguments);

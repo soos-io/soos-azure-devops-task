@@ -3,6 +3,15 @@ import DockerTaskRunner from "./TaskRunner";
 
 const exec: Record<string, TaskLibAnswerExecResult> = {};
 
+exec[`chown -R 1000:1000 /zap/wrk`] = {
+  code: 0,
+  stdout: "",
+};
+exec[`chmod -R 770 /zap/wrk`] = {
+  code: 0,
+  stdout: "",
+};
+
 exec[
   `docker run -u zap --rm -v /home/vsts/work/1/s:/zap/wrk:rw soosio/dast:latest --apiKey=apikey123 --clientId=clientid123 --projectName=Juice Shop --scanMode=baseline --onFailure=continue_on_failure --apiURL=https://dev-api.soos.io/api/ --integrationType=Plugin --integrationName=AzureDevOps --appVersion=0.0.0 --logLevel=INFO https://juice-shop.herokuapp.com`
 ] = {
@@ -34,12 +43,18 @@ exec[
 DockerTaskRunner.setAnswers({
   which: {
     docker: "docker",
+    chown: "chown",
+    chmod: "chmod",
   },
   checkPath: {
     docker: true,
+    chown: true,
+    chmod: true,
   },
   exist: {
     docker: true,
+    chown: true,
+    chmod: true,
   },
   exec,
 });
