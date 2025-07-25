@@ -59,7 +59,7 @@ export const getContributingDeveloper = (): ICreateScanRequestContributingDevelo
   const audit: ICreateScanRequestContributingDeveloperAudit[] = [
     {
       source: "EnvironmentVariable",
-      sourceName: sourceName ?? "Unknown",
+      sourceName: sourceName,
       contributingDeveloperId: contributingDeveloperId ?? "Unknown",
     },
   ];

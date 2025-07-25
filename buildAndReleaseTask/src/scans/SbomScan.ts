@@ -57,7 +57,7 @@ class SbomScan {
     const args: ISbomScanScriptParameters = {
       apiKey: this.parameters.apiKey,
       appVersion: this.parameters.appVersion,
-      apiURL: this.parameters.apiURL ?? undefined,
+      apiURL: this.parameters.apiURL,
       branchName: this.parameters.branchName ?? null,
       branchURI: this.parameters.branchURI ?? null,
       buildURI: this.parameters.buildURI ?? null,
