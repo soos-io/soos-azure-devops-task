@@ -46,5 +46,8 @@
     "prettier": "^3.3.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.1"
+  },
+  "overrides": {
+    "@azure/identity": "4.10.2"
   }
 }
