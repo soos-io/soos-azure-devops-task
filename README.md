@@ -120,7 +120,7 @@ Here is a **README.md** table for your task inputs, organized by parameter group
 
 SOOS can be configured to return a "failing" (non-zero) exit code when certain issue types at specific severities are identified. The issue types and severities can be configured in the SOOS app on the configure page, see https://kb.soos.io/scan-and-build-configurations
 
-By default the SOOS Azure DevOps tasks will report failures for issues/severities that fall outside of the allowable thresholds as a failure however subsequent steps in the pipeline will continue to run. To configure the pipeline to fail and to skip running any subsequent steps set the `onFailure` parameter to `'FAIL_THE_BUILD'` and `continueOnError` to `false`
+By default the SOOS Azure DevOps tasks will report failures for issues/severities that fall outside of the allowable thresholds as a failure, however subsequent steps in the pipeline will continue to run. To configure the pipeline to fail and to skip running any subsequent steps set the `onFailure` parameter to `'FAIL_THE_BUILD'` and `continueOnError` to `false`
 
 Example:
 ```
