@@ -125,12 +125,12 @@ By default the SOOS Azure DevOps tasks will report failures for issues/severitie
 Example:
 ```
 - task: SOOS-Security-Analysis@0
+  continueOnError: false
   inputs:
     apiKey: 'TODO'
     clientId: 'TODO'
     project: 'TODO'
     onFailure: 'FAIL_THE_BUILD'
-    continueOnError: false
 ```
 
 ---
