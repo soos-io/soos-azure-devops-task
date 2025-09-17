@@ -102,6 +102,7 @@ Here is a **README.md** table for your task inputs, organized by parameter group
 | Parameter Name | Description | Default/Initial Value |
 |----------------|-------------|-----------------------|
 | `otherOptions` | Additional options for ZAP or Syft | N/A |
+| `otherDockerRunOptions` | Other Options to pass to the Docker run command. | N/A |
 | `targetToScan` | Docker image name to scan | Required |
 | `workingDirectory` | Working directory for container (Defaults: `Build.SourcesDirectory`) | N/A |
 

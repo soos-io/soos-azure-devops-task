@@ -527,6 +527,13 @@
       "helpMarkDown": "Add additional command line options for items specific to the underlying ZAP or Syft depending on the scan."
     },
     {
+      "name": "otherDockerRunOptions",
+      "groupName": "CSA",
+      "type": "string",
+      "label": "Other Docker run Options",
+      "helpMarkDown": "Additional Docker CLI options for the run command, e.g. '-v /var/run/docker.sock:/var/run/docker.sock' to enable access a private registry."
+    },
+    {
       "name": "targetToScan",
       "groupName": "CSA",
       "required": true,
