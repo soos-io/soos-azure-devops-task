@@ -14,6 +14,7 @@ type IContainerScanParameters = ISharedScanParameters & {
   dockerImageTag: string;
   logLevel: LogLevel;
   otherOptions?: string;
+  otherDockerRunOptions?: string;
   targetToScan: string;
 };
 
@@ -40,6 +41,7 @@ class ContainerScan {
       ...sharedParameters,
       dockerImage: "soosio/csa",
       dockerImageTag: Task.getInput("dockerImageTag") ?? "latest",
+      otherDockerRunOptions: Task.getInput("otherDockerRunOptions"),
       otherOptions: Task.getInput("otherOptions"),
       outputDirectory: undefined,
       targetToScan: Task.getInputRequired("targetToScan"),
@@ -83,7 +85,7 @@ class ContainerScan {
 
     const cliArguments = mapToCliArguments(args);
 
-    const commandArguments = `--rm -v ${this.parameters.workingDirectory}:/usr/src/app:rw ${this.parameters.dockerImage}:${this.parameters.dockerImageTag} ${cliArguments} ${this.parameters.targetToScan}`;
+    const commandArguments = `--rm${this.parameters.otherDockerRunOptions && this.parameters.otherDockerRunOptions.length > 0 ? ` ${this.parameters.otherDockerRunOptions}` : ""} -v ${this.parameters.workingDirectory}:/usr/src/app:rw ${this.parameters.dockerImage}:${this.parameters.dockerImageTag} ${cliArguments} ${this.parameters.targetToScan}`;
     soosLogger.info(`Command Arguments: ${commandArguments}`);
 
     await runDockerCommandAndSetTaskStatus(ScanType.CSA, commandArguments);
