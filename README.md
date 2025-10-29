@@ -13,8 +13,8 @@ If you maintain an Open Source project, sign up for the Free as in Beer [SOOS Co
 This SOOS Azure DevOps Security Analysis Task is available on the [Azure DevOps Microsoft VisualStudio Marketplace](https://marketplace.visualstudio.com/azuredevops/)
 
 ## SOOS Badge Status
-[![Dependency Vulnerabilities](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi-hooks.soos.io%2Fapi%2Fshieldsio-badges%3FbadgeType%3DDependencyVulnerabilities%26pid%3Dwy6h8u8ov%26branchName%3Dmain)](https://app.soos.io)
-[![Out Of Date Dependencies](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi-hooks.soos.io%2Fapi%2Fshieldsio-badges%3FbadgeType%3DOutOfDateDependencies%26pid%3Dwy6h8u8ov%26branchName%3Dmain)](https://app.soos.io)
+[![Dependency Vulnerabilities](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi-hooks.soos.io%2Fapi%2Fshieldsio-badges%3FbadgeType%3DDependencyVulnerabilities%26pid%3Dxgd29bphl%26)](https://app.soos.io)
+[![Out Of Date Dependencies](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi-hooks.soos.io%2Fapi%2Fshieldsio-badges%3FbadgeType%3DOutOfDateDependencies%26pid%3Dxgd29bphl%26)](https://app.soos.io)
 
 ## Parameters
 
