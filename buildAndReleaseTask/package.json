@@ -29,7 +29,7 @@
     "knip": "knip"
   },
   "dependencies": {
-    "@soos-io/api-client": "1.9.8",
+    "@soos-io/api-client": "1.10.0",
     "azure-pipelines-task-lib": "^5.1.0",
     "azure-pipelines-tasks-docker-common": "^2.254.0",
     "core-js": "^3.41.0",
@@ -40,7 +40,7 @@
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.10.1",
     "eslint": "^9.24.0",
-    "globals": "^16.0.0",
+    "globals": "^17.0.0",
     "knip": "^5.62.0",
     "mocha": "^11.1.0",
     "prettier": "^3.3.3",
