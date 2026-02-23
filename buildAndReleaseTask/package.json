@@ -29,7 +29,7 @@
     "knip": "knip"
   },
   "dependencies": {
-    "@soos-io/api-client": "1.10.1",
+    "@soos-io/api-client": "1.10.2",
     "azure-pipelines-task-lib": "^5.1.0",
     "azure-pipelines-tasks-docker-common": "^2.254.0",
     "core-js": "^3.41.0",
@@ -48,6 +48,8 @@
     "typescript-eslint": "^8.29.1"
   },
   "overrides": {
-    "@azure/identity": "4.10.2"
+    "@azure/identity": "4.10.2",
+    "diff": "^8.0.3",
+    "minimatch": "^10.2.2"
   }
 }
