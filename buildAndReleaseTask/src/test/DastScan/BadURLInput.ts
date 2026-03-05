@@ -1,9 +1,11 @@
-import DockerTaskRunner from "../mocks/DockerTaskRunner";
+import { createDockerTaskRunner } from "../mocks/DockerTaskRunner";
 
-DockerTaskRunner.setInput("clientId", "clientid123");
-DockerTaskRunner.setInput("apiKey", "apikey123");
-DockerTaskRunner.setInput("projectName", "Juice_Shop");
-DockerTaskRunner.setInput("scanType", "DynamicApplicationSecurityTesting");
-DockerTaskRunner.setInput("targetUri", "http://doesnotexist.soos.io");
+const dockerTaskRunner = createDockerTaskRunner();
 
-DockerTaskRunner.run();
+dockerTaskRunner.setInput("clientId", "clientid123");
+dockerTaskRunner.setInput("apiKey", "apikey123");
+dockerTaskRunner.setInput("projectName", "Juice_Shop");
+dockerTaskRunner.setInput("scanType", "DynamicApplicationSecurityTesting");
+dockerTaskRunner.setInput("targetUri", "http://doesnotexist.soos.io");
+
+dockerTaskRunner.run();

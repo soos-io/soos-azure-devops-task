@@ -1,5 +1,6 @@
-import DockerTaskRunner from "../mocks/DockerTaskRunner";
+import { createDockerTaskRunner } from "../mocks/DockerTaskRunner";
 
-DockerTaskRunner.setInput("scanType", "DynamicApplicationSecurityTesting");
+const dockerTaskRunner = createDockerTaskRunner();
+dockerTaskRunner.setInput("scanType", "DynamicApplicationSecurityTesting");
 
-DockerTaskRunner.run();
+dockerTaskRunner.run();

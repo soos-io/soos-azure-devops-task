@@ -1,11 +1,13 @@
 import { TaskLibAnswerExecResult } from "azure-pipelines-task-lib/mock-answer";
-import TaskRunner from "../mocks/TaskRunner";
+import { createTaskRunner } from "../mocks/TaskRunner";
 
-TaskRunner.setInput("clientId", "clientid123");
-TaskRunner.setInput("apiKey", "apikey123");
-TaskRunner.setInput("projectName", "test-sbom-azuretask");
-TaskRunner.setInput("scanType", "SBOM");
-TaskRunner.setInput("sbomPath", "C:\\temp\\sbom.spdx.json");
+const taskRunner = createTaskRunner();
+
+taskRunner.setInput("clientId", "clientid123");
+taskRunner.setInput("apiKey", "apikey123");
+taskRunner.setInput("projectName", "test-sbom-azuretask");
+taskRunner.setInput("scanType", "SBOM");
+taskRunner.setInput("sbomPath", "C:\\temp\\sbom.spdx.json");
 
 const exec: Record<string, TaskLibAnswerExecResult> = {};
 exec["npm install --prefix ./soos @soos-io/soos-sbom@latest"] = {
@@ -18,7 +20,7 @@ exec[
   code: 0,
   stdout: "SOOS SBOM Analysis successful",
 };
-TaskRunner.setAnswers({
+taskRunner.setAnswers({
   which: {
     npm: "npm",
     node: "node",
@@ -34,4 +36,4 @@ TaskRunner.setAnswers({
   exec,
 });
 
-TaskRunner.run();
+taskRunner.run();
