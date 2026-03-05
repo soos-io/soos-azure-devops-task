@@ -59,7 +59,7 @@ describe("Security Scans", () => {
     it("should fail when the url doesn't exist ", async () => {
       // Given
 
-      const testPath = path.join(__dirname, "DastScan/BadUrlInput");
+      const testPath = path.join(__dirname, "DastScan/BadURLInput");
       const taskJsonPath = path.join(__dirname, "../..", "task.json");
       const testRunner = new MockTestRunner(testPath, taskJsonPath);
 

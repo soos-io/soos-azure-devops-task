@@ -26,7 +26,7 @@ jobs:
     - name: Clean Install
       run: npm ci
 
-    - name: Run Check if Present
+    - name: Run Check
       run: npm run check
 
   soos-sca:

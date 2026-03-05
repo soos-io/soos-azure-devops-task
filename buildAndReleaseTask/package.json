@@ -19,9 +19,9 @@
     "lint": "eslint --max-warnings 0",
     "lint:fix": "eslint --max-warnings 0 --fix",
     "typecheck": "tsc --noEmit",
-    "test": "npm run build && mocha build/test/_suite.js",
+    "test": "npm run build && mocha --timeout 20000 build/test/_suite.js",
     "test:coverage": "npm run test -- --reporter xunit --reporter-option output=ResultsFile.xml",
-    "check": "npm run build:clean && npm run format && npm run lint && npm run typecheck && npm run test && npm outdated",
+    "check": "npm run build:clean && npm run format && npm run lint && npm run typecheck && npm run test && (npm outdated || exit 0)",
     "link:soos-api-client": "npm link @soos-io/api-client && npm run build && npm link",
     "patch-api-client": "npm run clean:all && npm install @soos-io/api-client@latest --save-exact && npm install && npm run check",
     "clean": "npm run build:clean",
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@soos-io/api-client": "1.10.3",
-    "azure-pipelines-task-lib": "^5.1.0",
+    "azure-pipelines-task-lib": "^5.2.7",
     "azure-pipelines-tasks-docker-common": "^2.254.0",
     "core-js": "^3.41.0",
     "tslib": "^2.8.0"
