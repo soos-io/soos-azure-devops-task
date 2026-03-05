@@ -73,11 +73,15 @@ export const setTaskStatusFromCode = (code: number, scanType: ScanType): void =>
       Task.TaskResult.SucceededWithIssues,
       `SOOS ${scanType} Analysis task finished with issues.  Check the log for more information.`,
     );
-  } else if (code === 1) {
+    return;
+  }
+
+  if (code === 1) {
     Task.setResult(
       Task.TaskResult.Failed,
       `Failing the SOOS ${scanType} Analysis task. Check the log for more information.`,
     );
+    return;
   }
 
   Task.setResult(Task.TaskResult.Succeeded, `SOOS ${scanType} Analysis Complete.`);
