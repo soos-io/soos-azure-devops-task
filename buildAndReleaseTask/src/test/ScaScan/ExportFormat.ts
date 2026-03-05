@@ -1,15 +1,13 @@
 import { TaskLibAnswerExecResult } from "azure-pipelines-task-lib/mock-answer";
-import { createTaskRunner } from "../mocks/TaskRunner";
+import TaskRunner from "../mocks/TaskRunner";
 
-const taskRunner = createTaskRunner();
-
-taskRunner.setInput("clientId", "clientid123");
-taskRunner.setInput("apiKey", "apikey123");
-taskRunner.setInput("branch", "ref/heads/main");
-taskRunner.setInput("projectName", "test-sca-azuretask");
-taskRunner.setInput("projectPath", "C:\\temp\\");
-taskRunner.setInput("exportFormat", "SariF");
-taskRunner.setInput("exportFileType", "JSON");
+TaskRunner.setInput("clientId", "clientid123");
+TaskRunner.setInput("apiKey", "apikey123");
+TaskRunner.setInput("branch", "ref/heads/main");
+TaskRunner.setInput("projectName", "test-sca-azuretask");
+TaskRunner.setInput("projectPath", "C:\\temp\\");
+TaskRunner.setInput("exportFormat", "SariF");
+TaskRunner.setInput("exportFileType", "JSON");
 
 const exec: Record<string, TaskLibAnswerExecResult> = {};
 exec["npm install --prefix ./soos @soos-io/soos-sca@latest"] = {
@@ -22,7 +20,7 @@ exec[
   code: 0,
   stdout: "SOOS SCA Analysis successful",
 };
-taskRunner.setAnswers({
+TaskRunner.setAnswers({
   which: {
     npm: "npm",
     node: "node",
@@ -38,4 +36,4 @@ taskRunner.setAnswers({
   exec,
 });
 
-taskRunner.run();
+TaskRunner.run();

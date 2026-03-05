@@ -1,12 +1,10 @@
 import { TaskLibAnswerExecResult } from "azure-pipelines-task-lib/mock-answer";
-import { createTaskRunner } from "../mocks/TaskRunner";
+import TaskRunner from "../mocks/TaskRunner";
 
-const taskRunner = createTaskRunner();
-
-taskRunner.setInput("clientId", "clientid123");
-taskRunner.setInput("apiKey", "apikey123");
-taskRunner.setInput("project", "test-sca-azuretask");
-taskRunner.setInput("path", "C:\\temp\\");
+TaskRunner.setInput("clientId", "clientid123");
+TaskRunner.setInput("apiKey", "apikey123");
+TaskRunner.setInput("project", "test-sca-azuretask");
+TaskRunner.setInput("path", "C:\\temp\\");
 
 const exec: Record<string, TaskLibAnswerExecResult> = {};
 exec["npm install --prefix ./soos @soos-io/soos-sca@latest"] = {
@@ -19,7 +17,7 @@ exec[
   code: 0,
   stdout: "SOOS SCA Analysis successful",
 };
-taskRunner.setAnswers({
+TaskRunner.setAnswers({
   which: {
     npm: "npm",
     node: "node",
@@ -35,4 +33,4 @@ taskRunner.setAnswers({
   exec,
 });
 
-taskRunner.run();
+TaskRunner.run();

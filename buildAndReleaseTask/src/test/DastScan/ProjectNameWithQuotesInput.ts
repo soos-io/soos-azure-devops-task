@@ -1,12 +1,10 @@
-import { createDockerTaskRunner } from "../mocks/DockerTaskRunner";
+import DockerTaskRunner from "../mocks/DockerTaskRunner";
 
-const dockerTaskRunner = createDockerTaskRunner();
+DockerTaskRunner.setInput("clientId", "clientid123");
+DockerTaskRunner.setInput("apiKey", "apikey123");
+DockerTaskRunner.setInput("projectName", "SOOS's Test");
+DockerTaskRunner.setInput("scanType", "DynamicApplicationSecurityTesting");
+DockerTaskRunner.setInput("targetUri", "https://juice-shop.herokuapp.com");
+DockerTaskRunner.setInput("debug", "true");
 
-dockerTaskRunner.setInput("clientId", "clientid123");
-dockerTaskRunner.setInput("apiKey", "apikey123");
-dockerTaskRunner.setInput("projectName", "SOOS's Test");
-dockerTaskRunner.setInput("scanType", "DynamicApplicationSecurityTesting");
-dockerTaskRunner.setInput("targetUri", "https://juice-shop.herokuapp.com");
-dockerTaskRunner.setInput("debug", "true");
-
-dockerTaskRunner.run();
+DockerTaskRunner.run();

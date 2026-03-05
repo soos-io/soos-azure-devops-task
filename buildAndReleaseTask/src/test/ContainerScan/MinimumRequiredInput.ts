@@ -1,11 +1,9 @@
-import { createDockerTaskRunner } from "../mocks/DockerTaskRunner";
+import DockerTaskRunner from "../mocks/DockerTaskRunner";
 
-const dockerTaskRunner = createDockerTaskRunner();
+DockerTaskRunner.setInput("clientId", "clientid123");
+DockerTaskRunner.setInput("apiKey", "apikey123");
+DockerTaskRunner.setInput("projectName", "alpine");
+DockerTaskRunner.setInput("scanType", "CSA");
+DockerTaskRunner.setInput("targetToScan", "alpine");
 
-dockerTaskRunner.setInput("clientId", "clientid123");
-dockerTaskRunner.setInput("apiKey", "apikey123");
-dockerTaskRunner.setInput("projectName", "alpine");
-dockerTaskRunner.setInput("scanType", "CSA");
-dockerTaskRunner.setInput("targetToScan", "alpine");
-
-dockerTaskRunner.run();
+DockerTaskRunner.run();

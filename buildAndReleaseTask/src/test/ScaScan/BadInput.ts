@@ -1,7 +1,5 @@
-import { createTaskRunner } from "../mocks/TaskRunner";
+import TaskRunner from "../mocks/TaskRunner";
 
-const taskRunner = createTaskRunner();
+TaskRunner.setInput("bad", "input");
 
-taskRunner.setInput("bad", "input");
-
-taskRunner.run();
+TaskRunner.run();
