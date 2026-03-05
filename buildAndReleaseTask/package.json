@@ -19,7 +19,7 @@
     "lint": "eslint --max-warnings 0",
     "lint:fix": "eslint --max-warnings 0 --fix",
     "typecheck": "tsc --noEmit",
-    "test": "npm run build && mocha --timeout 60000 build/test/_suite.js",
+    "test": "npm run build && mocha --timeout 20000 build/test/_suite.js",
     "test:coverage": "npm run test -- --reporter xunit --reporter-option output=ResultsFile.xml",
     "check": "npm run build:clean && npm run format && npm run lint && npm run typecheck && npm run test && (npm outdated || exit 0)",
     "link:soos-api-client": "npm link @soos-io/api-client && npm run build && npm link",
