@@ -1,0 +1,40 @@
+name: Check and SOOS SCA/SAST Scans
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: buildAndReleaseTask
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: 24
+        registry-url: "https://registry.npmjs.org"
+
+    - name: Clean Install
+      run: npm ci
+
+    - name: Run Check if Present
+      run: npm run check
+
+  soos-sca:
+    needs: check
+    uses: soos-io/.github/.github/workflows/soos-sca-workflow.yml@main
+    secrets: inherit
+
+  soos-sast-docker:
+    needs: check
+    uses: soos-io/.github/.github/workflows/soos-sast-docker-workflow.yml@main
+    secrets: inherit
