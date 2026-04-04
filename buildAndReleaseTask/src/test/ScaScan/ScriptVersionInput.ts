@@ -10,7 +10,7 @@ TaskRunner.setInput("onFailure", "continue_on_failure");
 TaskRunner.setInput("scriptVersion", "1.2.3");
 
 const exec: Record<string, TaskLibAnswerExecResult> = {};
-exec["npm install --prefix ./soos @soos-io/soos-sca@1.2.3"] = {
+exec["npm install --ignore-scripts --prefix ./soos @soos-io/soos-sca@1.2.3"] = {
   code: 0,
   stdout: "run `npm fund` for details",
 };

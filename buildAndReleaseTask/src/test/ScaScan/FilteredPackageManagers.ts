@@ -11,7 +11,7 @@ TaskRunner.setInput("exportFormat", "Sarif");
 TaskRunner.setInput("exportFileType", "Json");
 
 const exec: Record<string, TaskLibAnswerExecResult> = {};
-exec["npm install --prefix ./soos @soos-io/soos-sca@latest"] = {
+exec["npm install --ignore-scripts --prefix ./soos @soos-io/soos-sca@latest"] = {
   code: 0,
   stdout: "run `npm fund` for details",
 };
