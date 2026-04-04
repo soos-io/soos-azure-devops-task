@@ -8,7 +8,7 @@ TaskRunner.setInput("scanType", "SBOM");
 TaskRunner.setInput("sbomPath", "C:\\temp\\sbom.spdx.json");
 
 const exec: Record<string, TaskLibAnswerExecResult> = {};
-exec["npm install --prefix ./soos @soos-io/soos-sbom@latest"] = {
+exec["npm install --ignore-scripts --prefix ./soos @soos-io/soos-sbom@latest"] = {
   code: 0,
   stdout: "run `npm fund` for details",
 };

@@ -89,9 +89,13 @@ class SastScan {
   }
 
   async runSast(scriptVersion: string, args: string): Promise<number> {
-    await Task.execAsync("npm", `install --prefix ./soos @soos-io/soos-sast@${scriptVersion}`, {
-      shell: true,
-    });
+    await Task.execAsync(
+      "npm",
+      `install --ignore-scripts --prefix ./soos @soos-io/soos-sast@${scriptVersion}`,
+      {
+        shell: true,
+      },
+    );
     const exitCode = await Task.execAsync(
       "node",
       `./soos/node_modules/@soos-io/soos-sast/bin/index.js ${args}`,

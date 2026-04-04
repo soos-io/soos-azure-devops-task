@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "main": "build/task.js",
   "scripts": {
-    "setup:install": "npm install",
+    "setup:install": "npm install --ignore-scripts",
     "setup:clean-install": "npm ci",
     "setup:update": "npx npm-check -u",
     "setup:clean": "npx rimraf node_modules && npx rimraf package-lock.json",
@@ -23,7 +23,7 @@
     "test:coverage": "npm run test -- --reporter xunit --reporter-option output=ResultsFile.xml",
     "check": "npm run build:clean && npm run format && npm run lint && npm run typecheck && npm run test && (npm outdated || exit 0)",
     "link:soos-api-client": "npm link @soos-io/api-client && npm run build && npm link",
-    "patch-api-client": "npm run clean:all && npm install @soos-io/api-client@latest --save-exact && npm install && npm run check",
+    "patch-api-client": "npm run clean:all && npm install @soos-io/api-client@latest --save-exact && npm install --ignore-scripts && npm run check",
     "clean": "npm run build:clean",
     "clean:all": "npm run clean && npm run setup:clean",
     "knip": "knip"

@@ -7,7 +7,7 @@ TaskRunner.setInput("projectName", "test-sast-azuretask");
 TaskRunner.setInput("scanType", "SAST");
 
 const exec: Record<string, TaskLibAnswerExecResult> = {};
-exec["npm install --prefix ./soos @soos-io/soos-sast@latest"] = {
+exec["npm install --ignore-scripts --prefix ./soos @soos-io/soos-sast@latest"] = {
   code: 0,
   stdout: "run `npm fund` for details",
 };
